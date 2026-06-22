@@ -1,0 +1,32 @@
+<section id="menu" class="container py-5"> 
+  <h2 class="text-center mb-5">Notre menu</h2> 
+  
+  <div class="row"> 
+    @for (dish of dishes; track dish.id) { 
+      <div class="col-12 col-md-6 col-lg-4 mb-4"> 
+        <div class="card h-100"> 
+          <img [src]="dish.imageUrl" class="card-img-top" [alt]="dish.name">
+          <div class="card-body"> 
+            <!-- Badge dynamique selon la catégorie --> 
+            <span class="badge" 
+                  [ngClass]="{ 
+                    'bg-success': dish.category === 'entree', 
+                    'bg-danger': dish.category === 'plat', 
+                    'bg-warning text-dark': dish.category === 'dessert' 
+                  }"> 
+              @switch (dish.category) { 
+                @case ('entree') { Entrée } 
+                @case ('plat') { Plat } 
+                @case ('dessert') { Dessert } 
+              } 
+            </span> 
+  
+            <h5 class="card-title mt-2">{{ dish.name }}</h5> 
+            <p class="card-text text-muted">{{ dish.description }}</p> 
+            <p class="price fw-bold">{{ dish.price }} FCFA</p> 
+          </div> 
+        </div> 
+      </div> 
+    } 
+  </div> 
+</section> 
