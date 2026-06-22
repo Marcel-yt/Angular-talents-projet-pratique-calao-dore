@@ -1,0 +1,28 @@
+<section class="horaires-section py-5"> 
+  <div class="container"> 
+    <h2 class="text-center mb-5">Nos horaires d'ouverture</h2>
+     <ul class="list-group"> 
+      @for (h of horaires; track h.jour) { 
+        <li class="list-group-item d-flex justify-content-between 
+                   align-items-center" 
+            [class.current-day]="h.jour === jourActuel"> 
+  
+          <span class="fw-bold">{{ h.jour }}</span> 
+  
+          @if (h.ferme) { 
+            <span class="badge bg-danger">Fermé</span> 
+          } @else { 
+            <span> 
+              {{ h.ouverture }} - {{ h.fermeture }} 
+              @if (h.jour === jourActuel) { 
+                <span class="badge bg-success ms-2"> 
+                  Ouvert aujourd'hui 
+                </span> 
+              } 
+            </span> 
+          } 
+        </li> 
+      } 
+    </ul> 
+  </div> 
+</section> 
