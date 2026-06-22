@@ -1,0 +1,21 @@
+<header class="bg-success d-flex align-items-center justify-content-between py-3 px-5 text-white"> 
+  <div class="logo">Le Calao Doré</div> 
+  
+  <!-- Bouton burger visible uniquement sur mobile --> 
+   @if (isMobile) { 
+     <button class="burger btn btn-success d-md-none ms-auto" (click)="toggleMenu()">☰</button> 
+   } 
+  
+  <!-- Navbar : visible par défaut sur desktop, conditionnelle sur mobile --> 
+  @if (isMenuOpen || !isMobile) { 
+    <nav class="d-none d-md-block ms-auto"> 
+      @for (link of links; track link) { 
+        <a class="nav-link d-inline-block ms-3 text-white"
+           [class.active]="activeLink === link"
+           (click)="setActive(link)">
+          {{ link }} 
+        </a> 
+      } 
+    </nav> 
+  } 
+</header>
