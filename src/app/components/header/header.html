@@ -1,17 +1,22 @@
-<header class="bg-success d-flex align-items-center justify-content-between py-3 px-5 text-white"> 
-  <div class="logo">Le Calao Doré</div> 
+<header class="bg-success d-flex align-items-center justify-content-between py-3 px-5 text-white w-100"> 
+  <div class="logo fs-5 fw-bold">Le Calao Doré</div> 
   
-  <!-- Bouton burger visible uniquement sur mobile --> 
-   @if (isMobile) { 
-     <button class="burger btn btn-success d-md-none ms-auto" (click)="toggleMenu()">☰</button> 
-   } 
+  @if (isMobile) { 
+    <button class="burger text-white d-md-none ms-auto" (click)="toggleMenu()">☰</button> 
+  } 
   
-  <!-- Navbar : visible par défaut sur desktop, conditionnelle sur mobile --> 
   @if (isMenuOpen || !isMobile) { 
-    <nav class="d-none d-md-block ms-auto"> 
+    <!-- <nav class="d-none d-md-flex ms-auto gap-3">  -->
+    <nav
+      [class.d-none]="isMobile && !isMenuOpen"
+      [class.d-flex]="!isMobile"
+      [class.flex-column]="isMobile"
+      class="ms-auto gap-3"
+    >
       @for (link of links; track link) { 
-        <a class="nav-link d-inline-block ms-3 text-white"
+        <a class="nav-link text-white"
            [class.active]="activeLink === link"
+           [href]="getLink(link)"
            (click)="setActive(link)">
           {{ link }} 
         </a> 

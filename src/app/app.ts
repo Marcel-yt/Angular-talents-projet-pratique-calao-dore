@@ -5,10 +5,11 @@ import { Hero } from './components/hero/hero';
 import { Menu } from './components/menu/menu';
 import { Temoignages } from './components/temoignages/temoignages';
 import { Horaires } from './components/horaires/horaires';
+import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Hero, Menu, Temoignages, Horaires], 
+  imports: [RouterOutlet, Header, Hero, Menu, Temoignages, Horaires, Footer], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

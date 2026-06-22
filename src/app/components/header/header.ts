@@ -12,6 +12,15 @@ export class Header implements OnInit {
   isMobile = false;
 
   links = ['Accueil', 'Menu', 'Témoignages', 'Horaires', 'Contact'];
+  
+  // Map des liens vers les IDs des sections
+  linkMap = {
+    'Accueil': '#hero',
+    'Menu': '#menu',
+    'Témoignages': '#temoignages',
+    'Horaires': '#horaires',
+    'Contact': '#footer'
+  };
 
   constructor(private ngZone: NgZone) {}
 
@@ -34,7 +43,11 @@ export class Header implements OnInit {
 
   setActive(link: string) {
     this.activeLink = link;
-    this.isMenuOpen = false;
+    this.isMenuOpen = false; // Ferme le menu sur mobile après clic
+  }
+  
+  getLink(link: string): string {
+    return this.linkMap[link as keyof typeof this.linkMap];
   }
 }
 
