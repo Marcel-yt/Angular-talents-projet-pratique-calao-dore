@@ -1,0 +1,27 @@
+<section class="testimonials-section py-5"> 
+  <div class="container"> 
+    <h2 class="text-center mb-5">Ce qu'ils en disent</h2> 
+  
+    <div class="row"> 
+      @for (t of testimonials; track t.id) { 
+        <div class="col-12 col-md-4 mb-3"> 
+          <div class="testimonial-card p-4" 
+               [class.bg-success]="t.rating > 3" 
+               [class.bg-warning]="t.rating === 3" 
+               [class.bg-danger]="t.rating < 3"> 
+  
+            <!-- Affichage des étoiles avec @for imbriqué --> 
+            <div class="stars mb-2"> 
+              @for (star of getStars(t.rating); track $index) { 
+                <span>⭐</span> 
+              } 
+            </div> 
+  
+            <p class="testimonial-text text-white">{{ t.text }}</p> 
+            <p class="testimonial-author fw-bold text-white">— {{ t.name }}</p> 
+          </div> 
+        </div> 
+      } 
+    </div> 
+  </div> 
+</section> 
